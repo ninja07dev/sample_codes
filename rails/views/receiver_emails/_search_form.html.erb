@@ -1,0 +1,15 @@
+<%= search_form_for @q, remote: true do |f| %>
+  <div class="row form-group">
+    <div class="col col-sm-4">
+      <%= f.search_field :name_cont, placeholder: t('receiver_email.search_by.name'), class: 'form-control' %>
+    </div>
+
+    <div class="col col-sm-4">
+      <%= f.search_field :email_cont, placeholder: t('receiver_email.search_by.email'), class: 'form-control' %>
+    </div>
+    <div class="col col-sm-4">
+      <%= f.submit class: 'btn btn-primary btn-sm' %>
+    </div>
+    <div class="col col-sm-4"></div>
+  </div>
+<% end %>

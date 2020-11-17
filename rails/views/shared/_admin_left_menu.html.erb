@@ -1,0 +1,12 @@
+<%= active_link_to entities_path, wrap_tag: :li do %>
+  <% entity_title = t('entity.title') %>
+  <i class="menu-icon fa fa-sitemap" title="<%= entity_title %>"></i><%= entity_title %>
+<% end %>
+<%= active_link_to marketplaces_path, wrap_tag: :li do %>
+  <% marketplace_title = t('marketplace.title') %>
+  <i class="menu-icon fa fa-shopping-cart" title="<%= marketplace_title %>"></i><%= marketplace_title %>
+<% end %>
+<%= active_link_to requested_marketplaces_path, wrap_tag: :li do %>
+  <% requested_marketplace_title = t('requested_marketplace.title') %>
+  <i class="menu-icon fa  fa-plus-square-o" title="<%= requested_marketplace_title %>"></i><%= requested_marketplace_title %>
+<% end %>

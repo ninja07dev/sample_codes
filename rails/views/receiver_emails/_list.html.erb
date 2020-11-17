@@ -1,0 +1,28 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= t('name') %></th>
+      <th><%= t('email') %></th>
+      <th><%= t('action') %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @collection.each do |email| %>
+      <tr>
+        <td><%= email.name %></td>
+        <td><%= email.email %></td>
+        <td>
+          <%= link_to edit_receiver_email_path(email), title: t('edit') do %>
+            <i class="fa fa-edit"></i>
+          <% end %>
+          <%= link_to receiver_email_path(email), 
+            method: :delete, data: { confirm: t('are_you_sure') },
+            remote: true, title: t('delete') do %>
+            <i class="fa fa-trash-o"></i>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= render 'shared/pagination' %>

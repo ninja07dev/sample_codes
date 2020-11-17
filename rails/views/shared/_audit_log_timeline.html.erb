@@ -1,0 +1,22 @@
+<% audits.each do |audit|%>
+  <div class="col-md-12">
+    <ul class="timeline">
+      <li class="time-label">
+        <span class="bg-indigo">
+        <%= formatted_date(audit[0]) %>
+        </span>
+      </li>
+      <% audit[1].sort_by{ |a| a.created_at }.reverse.each do |audit_log|%>
+        <li>
+          <div class="timeline-item">
+            <span class="time"><i class="fa fa-clock-o"></i><%= formatted_datetime(audit_log.created_at) %></span>
+            <h3 class="timeline-header"><span><%= audit_user_name(audit_log) %></span></h3>
+            <div class="timeline-body">
+              <%= AuditLogDataHelper.audit_message(audit_log).html_safe %>
+            </div>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

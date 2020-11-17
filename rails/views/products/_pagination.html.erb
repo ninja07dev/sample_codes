@@ -1,0 +1,4 @@
+<div id='loader' class='hidden'>
+  <%= render 'shared/loader' %>
+</div>
+<%= link_to_next_page @collection, 'View More', id: 'page', params: { action: 'index', paginating: true }, remote: true, class: 'btn btn-primary btn-sm hidden' %>

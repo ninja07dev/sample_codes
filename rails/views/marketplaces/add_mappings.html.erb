@@ -1,0 +1,52 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-header"><%= t('marketplace_mapping.title')%></div>
+        <div class="card-body card-block">
+          <%= form_for @resource, url: marketplace_save_mappings_path do |f| %>
+            <div class="form-group">
+              <div class='row'>
+                <div class='col-sm-3'>
+                  <b><%= t('entity.type')%></b>
+                </div>
+                <div class='col-sm-3'>
+                  <b><%= t('entity.identifier')%></b>
+                </div>
+                <div class='col-sm-3'>
+                  <b><%= t('entity.identifier_value')%></b>
+                </div>
+                <div class='col-sm-3'>
+                  <b><%= t('entity.block')%></b>
+                </div>
+              </div>
+            </div>
+            <%= f.fields_for :marketplace_mappings do |mm| %>
+              <div class='row mb-15'>
+                <div class='col-sm-3'>
+                  <%= mm.hidden_field :id, value: mm.object.try(:id) %>
+                  <%= mm.hidden_field :entity_id %>
+                  <%= entity_name(mm.object.try(:entity_id)) %>
+                </div>
+                <div class='col-sm-3'>
+                  <div class="input-group">
+                    <%= mm.text_field :entity_identifier, class: 'form-control' %>
+                  </div>
+                </div>
+                <div class='col-sm-3'>
+                  <div class="input-group">
+                    <%= mm.text_field :entity_identifier_value, class: 'form-control' %>
+                  </div>
+                </div>
+                <div class='col-sm-1'>
+                  <%= mm.check_box :block_present, class: 'switch-input'%>
+                </div>
+              </div>
+            <% end %>
+              <%= f.submit class: 'btn btn-success btn-sm' %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

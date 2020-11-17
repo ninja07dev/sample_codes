@@ -1,0 +1,8 @@
+<%= active_link_to products_path, wrap_tag: :li do %>
+  <% product_title = t('product.title') %>
+  <i class="menu-icon fa fa-briefcase" title= "<%= product_title %>" ></i><%= product_title %>
+<% end %>
+<%= active_link_to receiver_emails_path, wrap_tag: :li do %>
+  <% email_title = t('receiver_email.title') %>
+  <i class="menu-icon fa fa-envelope" title="<%= email_title %>"></i><%= email_title %>
+<% end %>

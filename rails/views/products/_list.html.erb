@@ -1,0 +1,37 @@
+<div data-controller='product'>
+    <div class="animated fadeIn">
+      <div class="row">
+        <% @collection.each do |product| %>
+          <div class="col-md-4">
+            <div class="card">
+              <%= link_to product.product_url, target: '_blank' do %>
+                <%= image_tag product_image(product.image) ,class: 'card-img-top img-size'%>
+              <% end %>
+              <div class="card-body">
+                <h4 class="card-title mb-3">
+                  <%= price_for_product(product.price) %>
+                  <span class='float-right'>
+                    <%= render partial: 'product_buttons', locals: { product: product } %>
+                  </span>
+                </h4>
+                <p class="card-text">
+                  <%= product.marketplace.name.titleize%>
+                </p>
+                <% product_name = product.name %>
+                <p class="card-text" title='<%= product_name %>'>
+                  <%= truncate(product_name, length: Settings.truncated_text.s_length)%>
+                </p>
+                <p>
+                  <%= t('status') %>:
+                  <label class="switch">
+                    <%= check_box_tag "product_#{product.id}", product.id, product.active?, { class: 'toggle-switch', data: { action: "change->product#changeStatus" } }%>
+                    <span class="slider round"></span>
+                  </label>
+                </p>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+</div>

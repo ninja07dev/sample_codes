@@ -1,0 +1,32 @@
+<div class="row">
+  <div class="col-lg-12">
+    <div class="card">
+      <div class="card-header">
+        <div class='row'>
+          <div class="col-sm-4 title-text">
+            <%= t('product.title') %>
+          </div>
+          <div class="col-sm-8 text-right">
+            <%= link_to new_product_path, class: 'btn btn-sm btn-primary pull-right' do %>
+              <i class="fa fa-plus"></i> <%= t('add') %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <%= render 'search_form' %>
+    
+    <div class="col-sm-12 collectionList">
+      <% if @collection.present? %>
+        <%= render 'list' %>
+      <% else %>
+        <%= render 'shared/no_records'%>
+      <% end %>
+    </div>
+    <div class="m-t-20">
+      <div class="tabPagonation text-center">
+        <%= render 'pagination' %>
+      </div>
+    </div>
+  </div>
+</div>

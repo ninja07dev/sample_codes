@@ -1,0 +1,29 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= t('name') %></th>
+      <th><%= t('url') %></th>
+      <th><%= t('action') %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @collection.each do |marketplace| %>
+      <tr>
+        <td><%= marketplace.name %></td>
+        <td><%= link_to marketplace.website_url, marketplace.website_url, target: '_blank' %></td>
+        <td>
+          <%= link_to marketplace_add_mappings_path(marketplace), title: t('mapping') do %>
+            <i class="fa fa-list-ul"></i>
+          <% end %>
+          <%= link_to edit_marketplace_path(marketplace), title: t('edit') do %>
+            <i class="fa fa-edit"></i>
+          <% end %>
+          <%= link_to marketplace_path(marketplace), method: :delete, data: { confirm: t('are_you_sure') }, remote: true, title: t('delete') do %>
+            <i class="fa fa-trash-o"></i>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= render 'shared/pagination' %>

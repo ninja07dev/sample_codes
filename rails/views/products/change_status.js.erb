@@ -1,0 +1,7 @@
+setTimeout(
+  function() 
+  {
+    $('#alerts').html("<%= j render partial: 'shared/alerts' %>");
+    $('#product_<%= @resource.id.to_s %>').prop('checked', <%= @resource.active? %>);
+  }, 500
+);

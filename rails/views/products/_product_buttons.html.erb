@@ -1,0 +1,14 @@
+<%= link_to product_audits_path(product), title: t('audits') do %>
+  <i class="fa fa-clock-o"></i>                    
+<% end %>
+<%= link_to product_path(product), title: t('show') do %>
+  <i class="fa fa-eye"></i>                    
+<% end %>
+<%= link_to marketplace_fetch_latest_data_path(product), title: t('product.fetch_latest_data') do %>
+  <i class="fa fa-cloud-download"></i>
+<% end %>
+<%= link_to product_path(product), 
+  method: :delete, data: { confirm: t('are_you_sure') },
+  remote: true, title: t('delete') do %>
+  <i class="fa fa-trash-o"></i>                       
+<% end %>

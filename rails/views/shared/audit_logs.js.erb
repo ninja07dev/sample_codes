@@ -1,0 +1,2 @@
+$('.audit-timeline').append("<%= j render partial: 'shared/audit_log_timeline', locals: { audits: @audits }%>");
+$('.pagination').html("<%= j link_to_next_page(@audits, 'View More', remote: true) %>");

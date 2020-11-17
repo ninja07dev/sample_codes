@@ -1,0 +1,15 @@
+<p>
+  Hello Admin,
+</p>
+<p>
+  We are not able to find any value for following entities for <%= link_to 'this product', @product_url %>.
+  <ol>
+    <% @empty_nodes.each do |node| %>
+      <li><%= node %></li>
+    <% end %>
+  </ol>
+</p>
+<p>
+ Thank you,<br/>
+ Inventree
+</p>

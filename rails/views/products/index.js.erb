@@ -1,0 +1,9 @@
+<% if params[:paginating] %>
+  $('.collectionList').append("<%= j render 'list' %>");
+<% else %>
+  $('.collectionList').html("<%= j render 'list' %>");
+<% end %>
+$('.tabPagonation').html("<%= j render 'pagination' %>");
+if (!$('#loader').hasClass('hidden')){
+  $('#loader').addClass('hidden');
+}

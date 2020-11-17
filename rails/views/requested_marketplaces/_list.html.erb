@@ -1,0 +1,25 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= t('marketplace.title') %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @collection.each do |marketplace| %>
+      <tr>
+        <td><%= marketplace.name %></td>
+        <td>
+          <%= link_to new_marketplace_path(marketplace: { website_url: marketplace.name }), title: t('add') do %>
+            <i class="fa fa-edit"></i>
+          <% end %>
+          <%= link_to requested_marketplace_path(marketplace), 
+            method: :delete, data: { confirm: t('are_you_sure') },
+            remote: true, title: t('delete') do %>
+            <i class="fa fa-trash-o"></i>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= render 'shared/pagination' %>

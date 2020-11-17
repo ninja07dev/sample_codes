@@ -1,0 +1,45 @@
+<% url = @resource.product_url %>
+<div class="card">
+  <div class="card-header">
+    <strong><%= t('product.data_from_url')%></strong>
+  </div>
+  <div class='col-sm-12'>
+    <div class = 'row'>
+      <div class='col col-sm-3'>
+        <%= link_to url, target: '_blank' do %>
+          <%= image_tag product_image(@resource.image) ,class: 'card-img-top img-size' %>
+        <% end %>
+      </div>
+      <div class='col col-sm-9'>
+        <table class='table table-striped'>
+          <tbody>
+            <tr>
+              <td><%= t('url') %></td>
+              <td title="<%= url %>"><%= link_to truncate(url, length: Settings.truncated_text.s_length), url, target: '_blank' %></td>
+            </tr>
+            <% name = @resource.name%>
+            <tr>
+              <td><%= t('name') %></td>
+              <td title="<%= name %>"><%= truncate(name, length: Settings.truncated_text.s_length) %></td>
+            </tr>
+            <% price = @resource.price%>
+
+            <tr>
+              <td><%= t('price') %></td>
+              <td><%= price_for_product(price) %></td>
+            </tr>
+            <% @product_entities.each do |product_entity|%>
+              <% unless Entity::NON_DELETABLE_ENTITIES.include?(product_entity.entity_name) %>
+                <tr>
+                  <td><%= entity_name(product_entity.entity_id) %></td>
+                  <% value = product_entity.value %>
+                  <td title="<%= value %>"><%= truncate(value, length: Settings.truncated_text.s_length) %></td>
+                </tr>
+              <% end %>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,32 @@
+<div class="row">
+  <% if @audits.present? %>
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-header">
+          <div class='row'>
+            <div class="col-sm-4">
+              <%= t('audit_logs.title') %>
+            </div>
+            <div class="col-sm-8 text-right">
+              <%= link_to 'javascript:history.back()', class: 'btn btn-sm btn-primary pull-right' do %>
+                <i class="fa fa-chevron-left"></i> <%= t('back') %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <div class="audit-timeline">
+              <%= render partial: 'shared/audit_log_timeline', locals: { audits: @audits } %>
+            </div>
+          </div>
+          <p class="pagination text-center">
+            <%= link_to_next_page(@audits, 'View More', remote: true, class: 'btn btn-primary btn-sm') %>
+          </p>
+        </div>
+      </div>
+    <% else %>
+      <%= render 'shared/no_records' %>
+    <% end %>
+  </div>
+</div>

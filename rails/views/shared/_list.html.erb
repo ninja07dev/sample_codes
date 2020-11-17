@@ -1,0 +1,8 @@
+<div class="col-sm-12 collectionList">
+  <%= render 'search_form' %>
+  <% if @collection.present? %>
+    <%= render 'list' %>
+  <% else %>
+    <%= render 'shared/no_records'%>
+  <% end %>
+</div>

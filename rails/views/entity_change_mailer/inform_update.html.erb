@@ -1,0 +1,17 @@
+<p>
+  Hello <%= @receiver_name %>,
+</p>
+<p>
+  We found following changes for <%= link_to 'product', @product_url %>. <br/> <br/>
+  <ol>
+    <% @changes.each do |entity_name, values| %>
+      <li>
+        <%= entity_name %> has been changed from '<%= values[0] %>' to '<%= values[1] %>'.
+      </li>
+    <% end %>
+  </ol>
+</p>
+<p>
+ Thank you,<br/>
+ Inventree
+</p>
